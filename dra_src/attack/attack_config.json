@@ -1,0 +1,29 @@
+{
+    "llama2-13b": {
+        "model_path": "/models/llama2/llama-2-13b-chat-hf"
+        },
+    "llama2-70b": {
+        "model_path": "/models/Llama-2-70b-chat-hf"
+        },
+    "zephyr": {
+        "model_path": "/models/zephyr-7b-beta"
+        },
+    "mixtral": {
+        "model_path": "/models/Mixtral-8x7B-Instruct-v0.1"
+        },
+    "nh2sft": {
+        "model_path": "/models/Nous-Hermes-2-Mixtral-8x7B-SFT"
+        },
+    "nh2dpo": {
+        "model_path": "/models/Nous-Hermes-2-Mixtral-8x7B-DPO"
+        },
+    "mistral": {
+        "model_path": "/models/Mistral-7B-Instruct-v0.2"
+        },
+    "vicuna": {
+        "model_path": "/models/vicuna/Xorbits/vicuna-13b-v1.5"
+        },
+    "harmbench": {
+        "model_path": "/models/HarmBench-Llama-2-13b-cls"
+    }
+}

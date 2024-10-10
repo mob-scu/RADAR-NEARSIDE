@@ -56,7 +56,7 @@ Note that detoxify 0.5.1 originally requires transformers 4.22.1, but the transf
 1. Enter the attack directory which contains the attack code.
 
    ```sh
-   cd src/attack
+   cd dra_src/attack
    ```
 
 2. Modify the local model path in `attack_config.json` based on your own requirements.

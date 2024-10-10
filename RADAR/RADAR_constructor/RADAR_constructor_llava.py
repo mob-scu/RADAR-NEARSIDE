@@ -5,7 +5,7 @@ import argparse
 import os
 import logging
 import pandas as pd
-from src.attack.harmfulbench_utils import predict
+from dra_src.attack.harmfulbench_utils import predict
 import json
 from tqdm import tqdm
 import random

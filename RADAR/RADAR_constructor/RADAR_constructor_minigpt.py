@@ -5,7 +5,7 @@ import argparse
 import pandas as pd
 import json
 from tqdm import tqdm
-from src.attack.harmfulbench_utils import predict
+from dra_src.attack.harmfulbench_utils import predict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import random
