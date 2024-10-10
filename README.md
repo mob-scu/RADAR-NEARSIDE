@@ -49,8 +49,8 @@ Note that detoxify 0.5.1 originally requires transformers 4.22.1, but the transf
 
    Please refer to https://huggingface.co/cais/HarmBench-Llama-2-13b-cls
 
-## Usage
-
+## RADAR Dataset Construction
+## NEARSIDE Adversarial Detection
 ### Attack
 
 1. Enter the attack directory which contains the attack code.
