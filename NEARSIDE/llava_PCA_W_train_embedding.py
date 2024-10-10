@@ -12,16 +12,16 @@ import pandas as pd
 def parse_args():
 
     parser = argparse.ArgumentParser(description="Demo")
-    parser.add_argument("--model-path", type=str, default="/data/huangyoucheng/mm-safety/ckpts/llava_llama_2_13b_chat_freeze")
+    parser.add_argument("--model-path", type=str, default="[your_path]/ckpts/llava_llama_2_13b_chat_freeze")
     parser.add_argument("--model-base", type=str, default=None)
     parser.add_argument("--gpu_id", type=int, default=0, help="specify the gpu to load the model.")
 
-    parser.add_argument("--attacked_image_fold", type=str, default='/data/huangyoucheng/mm-safety/visual_constrained_llava_train')
-    parser.add_argument("--raw_image_fold", type=str, default='../val2017')
-    parser.add_argument("--output_fold", type=str, default='llava_transfer_hidden_f_without_t')
+    parser.add_argument("--attacked_image_fold", type=str, default='../images/RADAR_adversarial_images/llava_hh_train')
+    parser.add_argument("--raw_image_fold", type=str, default='../images/val2017')
+    parser.add_argument("--output_fold", type=str, default='embeddings/llava_transfer_hidden')
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--test_data_file", type=str,
-                        default='../hh_harmless/train_filtered.jsonl', )
+                        default='../Queries_and_corpus/hh_train/train_filtered.jsonl', )
     parser.add_argument("--test_data_name", type=str,
                         default='hh_harmless', )
     args = parser.parse_args()

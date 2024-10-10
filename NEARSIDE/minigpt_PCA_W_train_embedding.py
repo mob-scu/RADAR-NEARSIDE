@@ -20,18 +20,18 @@ torch.set_num_threads(8)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Demo")
-    parser.add_argument("--cfg_path", default="eval_configs/minigpt4_eval.yaml", help="path to configuration file.")
+    parser.add_argument("--cfg_path", default="[your path]/eval_configs/minigpt4_eval.yaml", help="path to configuration file.")
     parser.add_argument("--gpu_id", type=int, default=0, help="specify the gpu to load the model.")
 
     parser.add_argument("--mode", type=str, default='VisualChatBot',
                         choices=[ "TextOnly", "VisualChatBot"],
                         help="Inference Mode: TextOnly: Text model only (Vicuna) \n VisualChatBot: Vision model + Text model (MiniGPT4) ")
 
-    parser.add_argument("--raw_image_fold", type=str, default="../val2017")
-    parser.add_argument("--output_fold", type=str, default="minigpt_transfer_hidden_f_without_t")
+    parser.add_argument("--raw_image_fold", type=str, default="../images/val2017")
+    parser.add_argument("--output_fold", type=str, default="embeddings/minigpt_transfer_hidden")
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--test_data_file", type=str,
-                        default='../hh_harmless/train_filtered.jsonl', )
+                        default='../Queries_and_corpus/hh_train/train_filtered.jsonl', )
     parser.add_argument("--test_data_name", type=str,
                         default='hh_harmless', )
     parser.add_argument(

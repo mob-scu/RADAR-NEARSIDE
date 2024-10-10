@@ -26,14 +26,14 @@ def parse_args():
 
     parser = argparse.ArgumentParser(description="Demo")
 
-    parser.add_argument("--image_fold", type=str, default='./././images/RADAR_adversarial_images/llava_hh_train',
+    parser.add_argument("--image_fold", type=str, default='images/RADAR_adversarial_images/llava_hh_train',
                         help="Image file")
-    parser.add_argument("--origin_fold", type=str, default='./././images/val2017',
+    parser.add_argument("--origin_fold", type=str, default='images/val2017',
                         help="Image file")
-    parser.add_argument("--output_fold", type=str, default='././RADAR_dataset/llava_hh_train',
+    parser.add_argument("--output_fold", type=str, default='RADAR/RADAR_dataset/llava_hh_train',
                         help="Output file.")
     parser.add_argument("--test_data_file", type=str,
-                        default='./././Queries_and_corpus/hh_train/train_filtered.jsonl', )
+                        default='Queries_and_corpus/hh_train/train_filtered.jsonl', )
     parser.add_argument("--test_data_name", type=str,
                         default='hh_harmless', )
     args = parser.parse_args()

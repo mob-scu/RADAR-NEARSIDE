@@ -8,8 +8,8 @@ import numpy as np
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--direction_file", type=str, default="minigpt_hh_train_direction_f.pkl")
-parser.add_argument("--test_fold", type=str, default="minigpt_hd_test_hidden_f")
+parser.add_argument("--direction_file", type=str, default="directions/llava_hh_train.pkl")
+parser.add_argument("--test_fold", type=str, default="embeddings/llava_hh_test")
 args = parser.parse_args()
 
 direction = pickle.load(open(args.direction_file, "rb"))

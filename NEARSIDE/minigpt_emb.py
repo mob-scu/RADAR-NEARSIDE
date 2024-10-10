@@ -19,15 +19,16 @@ torch.set_num_threads(8)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Demo")
-    parser.add_argument("--cfg_path", default="eval_configs/minigpt4_eval.yaml", help="path to configuration file.")
+    parser.add_argument("--cfg_path", default="[your_path]/eval_configs/minigpt4_eval.yaml", help="path to configuration file.")
     parser.add_argument("--gpu_id", type=int, default=5, help="specify the gpu to load the model.")
     parser.add_argument("--mode", type=str, default='VisualChatBot',
                         choices=[ "TextOnly", "VisualChatBot"],
                         help="Inference Mode: TextOnly: Text model only (Vicuna) \n VisualChatBot: Vision model + Text model (MiniGPT4) ")
+
     parser.add_argument("--sign", type=bool, default=True, help="specify the gpu to load the model.")
-    parser.add_argument("--list_path", type=str, default='../minigpt_attack_success_test_hd')
-    parser.add_argument("--raw_image_fold", type=str, default="../test2017")
-    parser.add_argument("--output_fold", type=str, default="minigpt_hd_test_hidden_f")
+    parser.add_argument("--list_path", type=str, default='../RADAR/RADAR_datasets/minigpt_hh_train')
+    parser.add_argument("--raw_image_fold", type=str, default="../images/test2017")
+    parser.add_argument("--output_fold", type=str, default="embeddings/minigpt_hh_train")
     parser.add_argument("--batch_size", type=int, default=1)
 
     parser.add_argument(
@@ -52,24 +53,14 @@ def setup_seeds(config):
     cudnn.deterministic = True
 
 
-# ========================================
-#             Model Initialization
-# ========================================
 
 print('>>> Initializing Models')
 
 args = parse_args()
 
-if args.list_path == '../minigpt_attack_success_train_hh':
-    attacked_image_fold = '../visual_constrained_eps_32_hh_rlhf'
-elif args.list_path == '../minigpt_attack_success_test_hh':
-    attacked_image_fold = '../visual_constrained_minpgpt_test'
-elif args.list_path == '../minigpt_attack_success_test_dc_demo_32':
-    attacked_image_fold = '../results_minigpt_constrained_32_demo_fixed'
-elif args.list_path == '../minigpt_attack_success_test_sr':
-    attacked_image_fold = '../results_minigpt_constrained_32_sr_train_filtered_fixed'
-elif args.list_path == '../minigpt_attack_success_test_hd':
-    attacked_image_fold = '../results_minigpt_constrained_32_harmful_train_filtered_fixed'
+
+attacked_image_fold = os.path.join('../images/RADAR/adversarial_images', args.output_fold.split("/")[1])
+
 print(attacked_image_fold)
 print(args.sign)
 cfg = Config(args)

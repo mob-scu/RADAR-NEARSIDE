@@ -9,17 +9,16 @@ from sklearn.decomposition import PCA
 from scipy.optimize import minimize
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--direction_file", type=str, default='llava_hh_train_direction_f.pkl')
+parser.add_argument("--direction_file", type=str, default='directions/llava_hh_train.pkl')
 
-parser.add_argument("--test_fold_source", type=str, default="llava_transfer_hidden_f")
-parser.add_argument("--test_fold_target", type=str, default="minigpt_transfer_hidden_f")
+parser.add_argument("--test_fold_source", type=str, default="embeddings/llava_transfer_hidden")
+parser.add_argument("--test_fold_target", type=str, default="embeddings/minigpt_transfer_hidden")
 
-parser.add_argument("--train_fold", type=str, default="llava_hh_train_hidden_f")
-parser.add_argument("--test_fold", type=str, default="minigpt_hd_test_hidden_f")
+parser.add_argument("--train_fold", type=str, default="embeddings/llava_hh_train_hidden_f")
+parser.add_argument("--test_fold", type=str, default="embeddings/minigpt_hh_test_hidden_f")
 
 parser.add_argument("--dim", type=int, default=2048)
 
-parser.add_argument("--save_file", type=str, default="minigpt_transfer_direction_f.pkl")
 args = parser.parse_args()
 print(args)
 direction = pickle.load(open(args.direction_file, "rb"))
@@ -107,13 +106,7 @@ margin_emb = torch.einsum('bp,p->b', all_emb[:, 1, ...], direction_t)
 # margin取中间值，以每个patch为单位
 margin = (margin_attack + margin_emb) / 2
 # margin = np.dot(margin, beta)
-with open(args.save_file, 'wb') as f:
-    direction = {
-        "direction": direction_t,
-        "mag": mag,
-        "margin": margin
-    }
-    pickle.dump(direction, f)
+
 
 
 

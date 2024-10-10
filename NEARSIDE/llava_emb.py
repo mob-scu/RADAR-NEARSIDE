@@ -12,14 +12,14 @@ from llava_llama_2_utils import prompt_wrapper
 def parse_args():
 
     parser = argparse.ArgumentParser(description="Demo")
-    parser.add_argument("--model-path", type=str, default="/data/huangyoucheng/mm-safety/ckpts/llava_llama_2_13b_chat_freeze")
+    parser.add_argument("--model-path", type=str, default="[your_path]/llava_llama_2_13b_chat_freeze")
     parser.add_argument("--model-base", type=str, default=None)
     parser.add_argument("--gpu_id", type=int, default=0, help="specify the gpu to load the model.")
 
-    parser.add_argument("--sign", type=bool, default=True, help="specify the gpu to load the model.")
-    parser.add_argument("--list_path", type=str, default='../llava_attack_success_test_dc_demo_un')
-    parser.add_argument("--raw_image_fold", type=str, default='../test2017')
-    parser.add_argument("--output_fold", type=str, default='llava_dc_un_test_hidden_f')
+    parser.add_argument("--sign", type=bool, default=True, help="add token")
+    parser.add_argument("--list_path", type=str, default='../RADAR/RADAR_dataset/llava_hh_train')
+    parser.add_argument("--raw_image_fold", type=str, default='../images/val2017')
+    parser.add_argument("--output_fold", type=str, default='embeddings/llava_hh_train')
     parser.add_argument("--batch_size", type=int, default=1)
 
     args = parser.parse_args()
@@ -49,35 +49,14 @@ tokenizer, model, image_processor, model_name = get_model(args)
 model.eval()
 print('[Initialization Finished]\n')
 
-
-def get_embeddings(file_prefix, file_name, file_suffix):
-    img = load_image(os.path.join(file_prefix, file_name + file_suffix))
-    img = image_processor.preprocess(img, return_tensors='pt')['pixel_values']
-    img = model.encode_images(img.half())
-    return img
-
 def get_hidden(prompt, file_prefix, file_name, file_suffix):
     img = load_image(os.path.join(file_prefix, file_name + file_suffix))
     img = image_processor.preprocess(img, return_tensors='pt')['pixel_values']
     _ = model(input_ids=prompt, images=img.half(),  return_dict=True, output_hidden_states=True)
     return torch.stack([torch.stack(_.hidden_states[1:])[:, 0, -1, :]])
 
-if args.list_path == '../llava_attack_success_train_hh':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_constrained_llava_train'
-elif args.list_path == '../llava_attack_success_test_hh':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_constrained_llava_test'
-elif args.list_path == '../llava_attack_success_test_dc_demo_32':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_v2_demo_constrained_32'
-elif args.list_path == '../llava_attack_success_test_dc_demo_16':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_llava_llama_v2_demo'
-elif args.list_path == '../llava_attack_success_test_dc_demo_64':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_v2_demo_constrained_64'
-elif args.list_path == '../llava_attack_success_test_dc_demo_un':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_v2_demo_unconstrained'
-elif args.list_path == '../llava_attack_success_test_sr':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_constrained_32_sr_train_filtered'
-elif args.list_path == '../llava_attack_success_test_hd':
-    attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_constrained_32_harmful_train_filtered'
+attacked_image_fold = os.path.join('../images/RADAR/adversarial_images', args.output_fold.split("/")[1])
+
 print(args)
 print(attacked_image_fold)
 print(args.sign)
