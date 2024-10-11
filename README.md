@@ -53,13 +53,6 @@ where −δ denotes the result is decreased while +δ denotes the opposite.
 
 Throughput of four different detection methods. The number is the average examples can be detected per second (item/s).
 
-## Table of Repo Content
-- [Repo structure](#repo-structure)
-- [Installation](#installation)
-- [RADAR Dataset Construction](#radar-dataset-construction)
-- [NEARSIDE Adversarial Detection](#nearside-adversarial-detection)
-- [Cite](#cite)
-
 ## Repo structure
 
 ```
@@ -143,6 +136,15 @@ RADAR-NEARSIDE
 `Queries_and_corpus`: The source QAs and Corpus that used to train the adversarial images and construct the RADAR dataset.
 
 `RADAR`: The proposed datasets. **`We will release the dataset in the near future, please stay tuned😊`**
+
+
+
+## Table of Repo Content
+- [Repo structure](#repo-structure)
+- [Installation](#installation)
+- [RADAR Dataset Construction](#radar-dataset-construction)
+- [NEARSIDE Adversarial Detection](#nearside-adversarial-detection)
+- [Cite](#cite)
 
 
 ## Installation
