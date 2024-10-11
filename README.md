@@ -3,9 +3,18 @@
 [![arXiv: paper](https://img.shields.io/badge/arXiv-paper-red.svg)]()
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
+Visual Language Models (VLMs) are vulnerable to adversarial attacks, especially those from adversarial images, which is however under-explored in literature.
+To facilitate research on this critical safety problem, we first construct a new la**R**ge-scale **A**dervsarial images dataset with **D**iverse h**A**rmful **R**esponses (RADAR), given that existing datasets are either small-scale or only contain limited types of harmful responses.
+With the new RADAR dataset, we further develop a novel and effective  i**N**-time **E**mbedding-based **A**dve**RS**arial **I**mage **DE**tection (NEARSIDE) method, which exploits a single vector that distilled from the hidden states of VLMs, which we call \textit{the attacking direction}, to achieve the detection of adversarial images against benign ones in the input. 
+Extensive experiments with two victim VLMs, LLaVA and MiniGPT-4, well demonstrate the effectiveness, efficiency,
+and cross-model transferrability of our proposed method. Our code is included in the supplementary file and will be made publicly available.
 Contact tangjingkun@stu.scu.edu.cn anytime.
 
+-RADAR Construction Pipeline:
+
+![img.png](img.png)
+
+-Diverse 
 ## Table of Contents
 - [Repo structure](#repo-structure)
 - [Installation](#installation)

@@ -21,7 +21,7 @@ from minigpt_utils import initialize_model, model_inference
 import json
 from tqdm import tqdm
 openai_api_key = "EMPTY"
-openai_api_base = 'https://llava.nextcenter.net/v1'
+openai_api_base = '[your llava api]'
 client = OpenAI(
     api_key=openai_api_key,
     base_url=openai_api_base,
@@ -116,43 +116,22 @@ def get_request(model, query, img, url):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Mask Text Experiment')
     parser.add_argument('--mutator', default='PL', type=str, help='Horizontal Flip(HF),Vertical Flip(VF),Random Rotation(RR),Crop and Resize(CR),Random Mask(RM),Random Solarization(RS),Random Grayscale(GR),Gaussian Blur(BL), Colorjitter(CJ), Random Posterization(RP) Policy(PL)')
-    parser.add_argument('--variant_save_dir', default='/data/huangyoucheng/mm-safety/JailGuard/JailGuard/demo_case/variant', type=str, help='dir to save the modify results')
-    parser.add_argument('--response_save_dir', default='/data/huangyoucheng/mm-safety/JailGuard/JailGuard/demo_case/response', type=str, help='dir to save the modify results')
     parser.add_argument('--number', default='8', type=str, help='number of generated variants')
     parser.add_argument('--threshold', default=0.025, type=str, help='Threshold of divergence')
 
-    parser.add_argument("--list_path", type=str, default='/data/huangyoucheng/mm-safety/minigpt_attack_success_test_hh')
-    parser.add_argument("--raw_image_fold", type=str, default="/data/huangyoucheng/mm-safety/test2017")
+    parser.add_argument("--list_path", type=str, default='../../RADAR/RADAR_dataset/llava_hh_test')
+    parser.add_argument("--raw_image_fold", type=str, default="../../images/test2017")
     parser.add_argument("--model", type=str, default="minigpt4")
-    parser.add_argument("--url", type=str)
+    parser.add_argument("--url", type=str, default='[yout minigpt request api]', help='your minigpt request api')
     parser.add_argument('--type', default='all', type=str, help='adversarial or benign or all')
 
     args = parser.parse_args()
 
-    if args.list_path == '/data/huangyoucheng/mm-safety/llava_attack_success_train_hh':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_constrained_llava_train'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/llava_attack_success_test_hh':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_constrained_llava_test'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/llava_attack_success_test_dc_demo_32':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_v2_demo_constrained_32'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/llava_attack_success_test_sr':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_constrained_32_sr_train_filtered'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/llava_attack_success_test_hd':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/results_llava_llama_constrained_32_harmful_train_filtered'
 
-    if args.list_path == '/data/huangyoucheng/mm-safety/minigpt_attack_success_train_hh':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_constrained_eps_32_hh_rlhf'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/minigpt_attack_success_test_hh':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/visual_constrained_minpgpt_test'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/minigpt_attack_success_test_dc_demo_32':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/results_minigpt_constrained_32_demo_fixed'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/minigpt_attack_success_test_sr':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/results_minigpt_constrained_32_sr_train_filtered_fixed'
-    elif args.list_path == '/data/huangyoucheng/mm-safety/minigpt_attack_success_test_hd':
-        attacked_image_fold = '/data/huangyoucheng/mm-safety/results_minigpt_constrained_32_harmful_train_filtered_fixed'
+    attacked_image_fold = os.path.join("../../RADAR/RADAR_adversarial_images", args.list_path.split("RADAR_dataset/")[1])
 
-    variant_save_dir = '/data/huangyoucheng/mm-safety/JailGuard/JailGuard/demo_case/' + args.list_path.split("/data/huangyoucheng/mm-safety/")[1] + 'var'
-    response_save_dir = '/data/huangyoucheng/mm-safety/JailGuard/JailGuard/demo_case/' + args.list_path.split("/data/huangyoucheng/mm-safety/")[1] + 'res'
+    variant_save_dir = 'demo_case/' + args.list_path.split("RADAR_dataset/")[1] + '_var'
+    response_save_dir = 'demo_case/' + args.list_path.split("RADAR_dataset/")[1] + '_res'
     number=int(args.number)
 
     # Step1: mask input
