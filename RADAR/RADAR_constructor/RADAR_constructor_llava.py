@@ -26,7 +26,7 @@ def parse_args():
 
     parser = argparse.ArgumentParser(description="Demo")
 
-    parser.add_argument("--image_fold", type=str, default='images/RADAR_adversarial_images/llava_hh_train',
+    parser.add_argument("--image_fold", type=str, default='RADAR/RADAR_adversarial_images/llava_hh_train',
                         help="Image file")
     parser.add_argument("--origin_fold", type=str, default='images/val2017',
                         help="Image file")

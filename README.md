@@ -1,11 +1,10 @@
-# **_`Still in construction ...`_**
 # EFFECTIVE AND EFFICIENT ADVERSARIAL DETEC- TION FOR VISION-LANGUAGE MODELS VIA A SINGLE VECTOR
 
 [![arXiv: paper](https://img.shields.io/badge/arXiv-paper-red.svg)]()
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-Contact us anytime: tangjingkun@stu.scu.edu.cn.
+Contact tangjingkun@stu.scu.edu.cn anytime.
 
 ## Table of Contents
 
