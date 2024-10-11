@@ -1,4 +1,4 @@
-# EFFECTIVE AND EFFICIENT ADVERSARIAL DETEC- TION FOR VISION-LANGUAGE MODELS VIA A SINGLE VECTOR
+# EFFECTIVE AND EFFICIENT ADVERSARIAL DETECTION FOR VISION-LANGUAGE MODELS VIA A SINGLE VECTOR
 
 [![arXiv: paper](https://img.shields.io/badge/arXiv-paper-red.svg)]()
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,14 +8,52 @@ To facilitate research on this critical safety problem, we first construct a new
 With the new RADAR dataset, we further develop a novel and effective  i**N**-time **E**mbedding-based **A**dve**RS**arial **I**mage **DE**tection (NEARSIDE) method, which exploits a single vector that distilled from the hidden states of VLMs, which we call \textit{the attacking direction}, to achieve the detection of adversarial images against benign ones in the input. 
 Extensive experiments with two victim VLMs, LLaVA and MiniGPT-4, well demonstrate the effectiveness, efficiency,
 and cross-model transferrability of our proposed method. Our code is included in the supplementary file and will be made publicly available.
-Contact tangjingkun@stu.scu.edu.cn anytime.
 
--RADAR Construction Pipeline:
+`Contact tangjingkun@stu.scu.edu.cn anytime. 😊`
 
-![img.png](img.png)
+### RADAR Construction Pipeline:
 
--Diverse 
-## Table of Contents
+![img.png](RADAR_pipeline.png)
+
+### Diversity of RADAR:
+
+![img.png](diversity.png)
+
+Comparison of datasets for adversarially attacking VLMs. "-" means not reported.
+
+### RADAR exemplar sample:
+
+![img.png](RADAR_SAMPLE.png)
+
+In RADAR, each sample consists of an adversarial sample and a benign sample, with each containing
+a query, an adversarial/benign image and VLMs’ response. 
+
+### NEARSIDE method:
+
+![img.png](NEARSIDE.png)
+
+Our method learns the attacking direction on a
+set of tuples (benign input, adversarial input), and then classifies a test input as benign or adversarial
+according to the projection between the input’s embedding and the attacking direction. If the
+projection is larger than a threshold, it is classified as an adversarial input, and otherwise as benign.
+
+### Metrics:
+
+![img.png](NEARSIDE and RADAR.png)
+
+Results of JailGuard v.s. NEARSIDE on RADAR test sets (best highlighted in bold).
+
+![img.png](ceoss-model.png)
+
+We utilize the attacking direction extracted from the source VLM (svlm) to detect adversarial input
+for the target VLM (tvlm), denoted as svlm → tvlm. We calculate the difference by subtracting the result of (svlm → tvlm) from single model.
+where −δ denotes the result is decreased while +δ denotes the opposite.
+
+![img.png](efficiency.png)
+
+Throughput of four different detection methods. The number is the average examples can be detected per second (item/s).
+
+## Table of Repo Content
 - [Repo structure](#repo-structure)
 - [Installation](#installation)
 - [RADAR Dataset Construction](#radar-dataset-construction)
