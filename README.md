@@ -7,11 +7,96 @@
 Contact tangjingkun@stu.scu.edu.cn anytime.
 
 ## Table of Contents
-
+- [Repo structure](#repo-structure)
 - [Installation](#installation)
 - [RADAR Dataset Construction](#radar-dataset-construction)
 - [NEARSIDE Adversarial Detection](#nearside-adversarial-detection)
 - [Cite](#cite)
+
+## Repo structure
+
+```
+RADAR-NEARSIDE
+├─ JailGuard
+│  └─ JailGuard
+│     ├─ time_consume.py
+│     ├─ jailguard.sh
+│     ├─ utils
+│     │  ├─ similarity.py
+│     │  ├─ config.cfg
+│     │  ├─ prompt
+│     │  │  ├─ 1
+│     │  │  └─ 2
+│     │  ├─ utils.py
+│     │  ├─ baseline_utils.py
+│     │  ├─ augmentations.py
+│     │  └─ mask_utils.py
+│     └─ jail_guard.py
+├─ requirements.txt
+├─ Queries_and_corpus
+│  ├─ hd
+│  │  └─ hd.jsonl
+│  ├─ hh_test
+│  │  └─ hh_test.jsonl
+│  ├─ dc
+│  │  └─ dc.csv
+│  └─ hh_train
+│     └─ hh_train.jsonl
+├─ README.md
+├─ NEARSIDE
+│  ├─ minigpt_PCA_W_train_embedding.py
+│  ├─ llava_emb.py
+│  ├─ llava_PCA_W_train_embedding.py
+│  ├─ PCA_method_transfer.py
+│  ├─ test_direction.py
+│  ├─ minigpt_emb.py
+│  └─ get_direction.py
+├─ RADAR
+│  ├─ instruction.sh
+│  ├─ RADAR_dataset
+│  │  ├─ minigpt_hd_test
+│  │  │  └─ success_qa.json
+│  │  ├─ llava_hh_test
+│  │  │  └─ success_qa.json
+│  │  ├─ minigpt_hh_test
+│  │  │  └─ success_qa.json
+│  │  ├─ llava_hd_test
+│  │  │  └─ success_qa.json
+│  │  ├─ llava_hh_train
+│  │  │  └─ success_qa.json
+│  │  ├─ llava_dc_test
+│  │  │  └─ success_qa.json
+│  │  ├─ minigpt_hh_train
+│  │  │  └─ success_qa.json
+│  │  └─ minigpt_dc_test
+│  │     └─ success_qa.json
+│  └─ RADAR_constructor
+│     ├─ RADAR_constructor_minigpt.py
+│     └─ RADAR_constructor_llava.py
+└─ dra_src
+   └─ attack
+      ├─ attack_config.json
+      ├─ cache
+      │  └─ moderation.json
+      ├─ harmfulbench_utils.py
+      ├─ attack_batch.py
+      ├─ attack.py
+      ├─ utils.py
+      └─ harmful_test.py
+
+```
+`dra_src`: The classifier that used to filter the RADAR dataset. Refer to https://github.com/LLM-DRA/DRA?tab=readme-ov-file.
+
+`images`: COCO val images 2017 and COCO test images 2017. Download at https://cocodataset.org/#download.
+ 
+`JailGuard`: The baseline method after our edition. Refer to https://github.com/shiningrain/JailGuard.
+
+`NEARSIDE`: The proposed detection method.
+
+`Queries_and_corpus`: The source QAs and Corpus that used to train the adversarial images and construct the RADAR dataset.
+
+`RADAR`: The proposed datasets. **`We will release the dataset in the near future, please stay tuned😊`**
+
 
 ## Installation
 
