@@ -39,7 +39,7 @@ projection is larger than a threshold, it is classified as an adversarial input,
 
 ### Metrics:
 
-![img.png](NEARSIDE-and-RADAR.png)
+![img.png](NEARSIDE_and_RADAR.png)
 
 Results of JailGuard v.s. NEARSIDE on RADAR test sets (best highlighted in bold).
 
