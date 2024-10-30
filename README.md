@@ -5,9 +5,9 @@
 
 Visual Language Models (VLMs) are vulnerable to adversarial attacks, especially those from adversarial images, which is however under-explored in literature.
 To facilitate research on this critical safety problem, we first construct a new la**R**ge-scale **A**dervsarial images dataset with **D**iverse h**A**rmful **R**esponses (RADAR), given that existing datasets are either small-scale or only contain limited types of harmful responses.
-With the new RADAR dataset, we further develop a novel and effective  i**N**-time **E**mbedding-based **A**dve**RS**arial **I**mage **DE**tection (NEARSIDE) method, which exploits a single vector that distilled from the hidden states of VLMs, which we call \textit{the attacking direction}, to achieve the detection of adversarial images against benign ones in the input. 
+With the new RADAR dataset, we further develop a novel and effective  i**N**-time **E**mbedding-based **A**dve**RS**arial **I**mage **DE**tection (NEARSIDE) method, which exploits a single vector that distilled from the hidden states of VLMs, which we call the attacking direction, to achieve the detection of adversarial images against benign ones in the input. 
 Extensive experiments with two victim VLMs, LLaVA and MiniGPT-4, well demonstrate the effectiveness, efficiency,
-and cross-model transferrability of our proposed method. Our code is included in the supplementary file and will be made publicly available.
+and cross-model transferrability of our proposed method. 
 
 `Contact tangjingkun@stu.scu.edu.cn anytime. 😊`
 
@@ -39,7 +39,7 @@ projection is larger than a threshold, it is classified as an adversarial input,
 
 ### Metrics:
 
-![img.png](NEARSIDE and RADAR.png)
+![img.png](NEARSIDE-and-RADAR.png)
 
 Results of JailGuard v.s. NEARSIDE on RADAR test sets (best highlighted in bold).
 
